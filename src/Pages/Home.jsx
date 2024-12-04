@@ -8,13 +8,9 @@ import Latestvisa from "../Components/Latestvisa";
 const Home = () => {
     return (
         <div >
-            <div  
-                style={{
-                    backgroundImage: "url(https://img.daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.webp)",
-                }}>
-                  <Navbar/>
+            
+            <Navbar />
             <Hero/>
-            </div>
             <Slider/>
             <Latestvisa/>
             <Footer/>

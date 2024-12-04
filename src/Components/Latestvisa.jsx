@@ -1,9 +1,9 @@
 const Latestvisa = () => {
     return (
-        <div className="px-20 py-10 space-y-3">
+        <div className="md:px-20 sm:px-10  py-10 space-y-3 ">
             <h1 className="text-4xl font-bold text-center mb-5">Latest Visa</h1>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center  gap-3">
-                <div className="card bg-base-100 image-full  lg:w-80 md:w-72 sm:w-96  shadow-xl">
+            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 justify-items-center  gap-5">
+                <div className="card bg-base-100 image-full  lg:w-full md:w-full sm:w-full  shadow-xl">
                     <figure>
                         <img
                             src="https://cdn-images-1.medium.com/max/2000/1*7F96K987FCuTqx1Z8sEQ6A.jpeg"
@@ -17,7 +17,7 @@ const Latestvisa = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card bg-base-100 image-full  lg:w-80 md:w-72 sm:w-96  shadow-xl">
+                <div className="card bg-base-100 image-full  lg:w-full md:w-full sm:w-full  shadow-xl">
                     <figure>
                         <img
                             src="https://cdn-images-1.medium.com/max/2000/1*7F96K987FCuTqx1Z8sEQ6A.jpeg"
@@ -31,7 +31,7 @@ const Latestvisa = () => {
                         </div>
                     </div>
                 </div>
-                <div className="card bg-base-100 image-full  lg:w-80 md:w-72 sm:w-96  shadow-xl">
+                <div className="card bg-base-100 image-full  lg:w-full md:w-full sm:w-full  shadow-xl">
                     <figure>
                         <img
                             src="https://cdn-images-1.medium.com/max/2000/1*7F96K987FCuTqx1Z8sEQ6A.jpeg"
