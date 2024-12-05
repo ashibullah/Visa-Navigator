@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import RegisterPage from "../Pages/RegisterPage";
 import LoginPage from "../Pages/LoginPage";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute, { CrashLogin } from "./PrivateRoute";
 import VisaList from "../Pages/VisaList";
 import Myvisa from "../Pages/Myvisa";
 import MyApplication from "../Pages/MyApplication";
@@ -12,21 +12,26 @@ import AddVisa from "../Pages/AddVisa";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home/>
+        element: <Home />
     },
     {
-        path : "/signup",
-        element : <RegisterPage/>
+        path: "/signup",
+        element: <CrashLogin>
+            <RegisterPage />
+        </CrashLogin> 
     },
     {
-        path : "/auth",
-        element: <LoginPage/>
+        path: "/auth",
+        element: <CrashLogin>
+            <LoginPage/>
+        </CrashLogin>
     },
     {
         path: "/visas",
         element: <PrivateRoute>
             <VisaList/>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader: ()=>fetch("http://localhost:5000/visa"),
     },
     {
         path: "/visas/add",
@@ -43,7 +48,7 @@ export const router = createBrowserRouter([
     {
         path: "/visas/application",
         element: <PrivateRoute>
-            <MyApplication/>
+            <MyApplication />
         </PrivateRoute>
     },
 ]);

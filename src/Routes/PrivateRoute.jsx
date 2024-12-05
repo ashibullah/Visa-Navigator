@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Navigate } from "react-router-dom";
 
 
 
-// eslint-disable-next-line react/prop-types
+
 const PrivateRoute = ({children}) => {
     const {user} = useContext(AuthContext);
     if(user && user?.email){
@@ -17,5 +18,12 @@ const PrivateRoute = ({children}) => {
         </div>
     );
 };
+
+export const CrashLogin =({children})=>{
+    const { user } = useContext(AuthContext);
+
+    return !(user) ? children : <Navigate to="/" />;
+}
+
 
 export default PrivateRoute;
