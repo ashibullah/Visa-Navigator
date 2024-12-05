@@ -1,7 +1,11 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const Allvisa = () => {
+    const navigate = useNavigate();
     const allVisa = useLoaderData();
+    const handleDetails =(id)=>{
+        navigate(`/visas/${id}`);
+    }
     return (
         <div className="max-w-7xl mx-auto py-5 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 gap-5">
 
@@ -22,7 +26,7 @@ const Allvisa = () => {
                     
                 </div>
 
-                <button className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md">
+                <button onClick={()=>handleDetails(visa._id)} className="mt-4 w-full bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-4 rounded-md">
                     Details
                 </button>
             </div>

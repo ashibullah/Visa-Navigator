@@ -7,6 +7,7 @@ import VisaList from "../Pages/VisaList";
 import Myvisa from "../Pages/Myvisa";
 import MyApplication from "../Pages/MyApplication";
 import AddVisa from "../Pages/AddVisa";
+import VisaDetails from "../Pages/VisaDetails";
 
 
 export const router = createBrowserRouter([
@@ -50,5 +51,12 @@ export const router = createBrowserRouter([
         element: <PrivateRoute>
             <MyApplication />
         </PrivateRoute>
+    },
+    {
+        path: "/visas/:id",
+        element: <PrivateRoute>
+            <VisaDetails/>
+        </PrivateRoute>,
+        loader: ({params})=> fetch(`http://localhost:5000/visas/${params.id}`),
     },
 ]);
