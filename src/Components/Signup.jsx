@@ -43,7 +43,8 @@ const SignUp = () => {
       updateUserProfile({ displayName: name, photoURL: imageUrl })
                     .then(() => {
                     //    console.log(user); 
-                        navigate("/"); 
+
+                    navigate("/"); 
                     })
                     .catch((err) => {
                         alert("Error updating profile:", err);

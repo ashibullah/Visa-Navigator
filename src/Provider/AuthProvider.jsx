@@ -10,17 +10,18 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
+    
     const auth = getAuth(app);
 
     const createUserUsingGoogle = () => {
         return signInWithPopup(auth, provider);
     }
 
-    const emailLogin = (email, password) =>{
-       return( signInWithEmailAndPassword(auth, email, password))
+    const emailLogin = (email, password) => {
+        return (signInWithEmailAndPassword(auth, email, password))
     }
-    const emailSignup = (email, password) =>{
-       return( createUserWithEmailAndPassword(auth, email, password))
+    const emailSignup = (email, password) => {
+        return (createUserWithEmailAndPassword(auth, email, password))
     }
 
     useEffect(() => {
@@ -32,11 +33,11 @@ const AuthProvider = ({ children }) => {
         }
 
     })
-    const logout =()=>{
+    const logout = () => {
         return signOut(auth);
     }
 
-    const updateUserProfile = (updatedData)=>{
+    const updateUserProfile = (updatedData) => {
         return updateProfile(auth.currentUser, updatedData)
 
     }
@@ -45,6 +46,7 @@ const AuthProvider = ({ children }) => {
         user,
         setUser,
         logout,
+        
         emailLogin,
         emailSignup,
         updateUserProfile

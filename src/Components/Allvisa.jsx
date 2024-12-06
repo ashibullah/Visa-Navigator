@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 const Allvisa = () => {
     const navigate = useNavigate();
     const allVisa = useLoaderData();
+    // console.log(allVisa)
     const handleDetails =(id)=>{
         navigate(`/visas/${id}`);
     }

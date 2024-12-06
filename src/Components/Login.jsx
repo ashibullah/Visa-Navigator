@@ -12,7 +12,19 @@ const Login = () => {
     .then((result)=> {
           const user = result.user;
           setUser(user);
-          console.log(user)
+          console.log(user);
+          fetch('http://localhost:5000/users',{
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user),
+
+          })
+            .then(res => res.json())
+            .catch(err => {
+                console.log(err);
+            })
           // IdP data available using getAdditionalUserInfo(result)
           // ...
       }).catch((error) => {

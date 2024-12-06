@@ -13,7 +13,8 @@ import VisaDetails from "../Pages/VisaDetails";
 export const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />
+        element: <Home />,
+        loader : ()=> fetch('http://localhost:5000/visa/latest'),
     },
     {
         path: "/signup",
