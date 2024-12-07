@@ -18,7 +18,7 @@ const Navbar = () => {
             user && (
               <>
               <NavLink to={"/visas/add"} className=" text-sm">Add Visa</NavLink>
-               <NavLink to={"/visas/myvisa"} className=" text-sm">My Added Visa</NavLink>
+               <NavLink to={`/visa/myVisa/${user.email}`} className=" text-sm">My Added Visa</NavLink>
                <NavLink to={"/visas/application"} className=" text-sm">My Visa Application</NavLink>
               </>
             )

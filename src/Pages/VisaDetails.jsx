@@ -28,6 +28,8 @@ const VisaDetails = () => {
               .then(res => res.json()) 
               .then(data => {
                   console.log(data.result); 
+                  if(data.result) alert("Visa applied successfully.")
+                    else alert("You have already applied for this country")
               })
                 .catch(err => {
                     console.log(err);

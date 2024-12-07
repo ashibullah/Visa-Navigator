@@ -42,10 +42,11 @@ export const router = createBrowserRouter([
         </PrivateRoute>
     },
     {
-        path: "/visas/myvisa",
+        path: "/visa/myVisa/:id",
         element: <PrivateRoute>
             <Myvisa/>
-        </PrivateRoute>
+        </PrivateRoute>,
+        loader :({params}) => fetch(`http://localhost:5000/visa/myVisa/${params.id}`),
     },
     {
         path: "/visas/application",
