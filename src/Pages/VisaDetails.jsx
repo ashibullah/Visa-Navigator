@@ -9,7 +9,32 @@ const VisaDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const handleApply = (e) =>{
         e.preventDefault();
-    } 
+        const formData = new FormData(e.target);
+        let myVisa = Object.fromEntries(formData.entries());
+        myVisa = { 
+            ...myVisa, 
+            visaId: visa._id 
+        };
+        
+        fetch('http://localhost:5000/visa/apply', 
+            {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                },
+                body: JSON.stringify(myVisa),
+    
+              })
+              .then(res => res.json()) 
+              .then(data => {
+                  console.log(data.result); 
+              })
+                .catch(err => {
+                    console.log(err);
+                })
+
+    }
+
     return (
         <div>
         <Navbar />

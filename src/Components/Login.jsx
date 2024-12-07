@@ -25,8 +25,7 @@ const Login = () => {
             .catch(err => {
                 console.log(err);
             })
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
+          
       }).catch((error) => {
           // Handle Errors here.
           const errorCode = error.code;
@@ -93,7 +92,7 @@ const Login = () => {
         </form>
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600 hover:text-gray-900">
-            Don't have an account? <span className="text-blue-600" ><Link to={"/signup"}>Register</Link></span>
+            Do not have an account? <span className="text-blue-600" ><Link to={"/signup"}>Register</Link></span>
           </p>
         </div>
       </div>
