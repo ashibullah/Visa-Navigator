@@ -14,7 +14,10 @@ const VisaDetails = () => {
         myVisa = { 
             ...myVisa, 
             visaId: visa._id 
-        };
+        }
+        e.target.reset;
+        setShowModal(false);
+        ;
         
         fetch('http://localhost:5000/visa/apply', 
             {
@@ -27,7 +30,7 @@ const VisaDetails = () => {
               })
               .then(res => res.json()) 
               .then(data => {
-                  console.log(data.result); 
+                //   console.log(data.result); 
                   if(data.result) alert("Visa applied successfully.")
                     else alert("You have already applied for this country")
               })

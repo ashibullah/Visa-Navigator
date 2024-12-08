@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 const VisaCard = ({ visa, handleDetails }) => {
     return (
         <div key={visa._id} className="bg-white rounded-xl shadow-md p-6 mb-4 w-full mx-auto">

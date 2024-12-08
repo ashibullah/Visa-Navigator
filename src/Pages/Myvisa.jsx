@@ -1,12 +1,36 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 
 const Myvisa = () => {
     const { user } = useContext(AuthContext);
-    const myVisaInfo = useLoaderData();
+    const myVisaInfoLoaded = useLoaderData();
+    const [myVisaInfo , setMyVisaInfo] = useState(myVisaInfoLoaded);
+    const handleDelete = (id)=>{
+        // console.log(id);
+        fetch(`http://localhost:5000/visa/delete/${id}`,{
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(user),
+
+          })
+          .then((res) => res.json())
+          .then((data) => {
+              if (data.deletedCount) {
+                  // Remove the deleted visa from the state
+                  setMyVisaInfo((prevVisas) => prevVisas.filter((visa) => visa.applicationId !== id));
+              } else {
+                  console.log("Failed to delete visa:", data.acknowledged);
+              }
+          })
+          .catch((err) => {
+              console.log(err);
+          });
+    }
     // console.log(myVisaInfo)
 
     // console.log(myVisaInfo);
@@ -51,7 +75,7 @@ const Myvisa = () => {
                             <td>{visa.processingTime} days</td>
                             <td>${visa.fee}</td>
                             <th>
-                                <Link to={`/visas/${visa._id}`} className="btn btn-ghost btn-xs">Details</Link>
+                                <button onClick={()=>handleDelete(visa.applicationId)} className="btn bg-red-600 text-white btn-xs">Cancel</button>
                             </th>
                         </tr>
                     ))}
