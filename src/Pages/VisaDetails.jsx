@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const VisaDetails = () => {
     const {user} = useContext(AuthContext);
@@ -19,7 +20,7 @@ const VisaDetails = () => {
         setShowModal(false);
         ;
         
-        fetch('http://localhost:5000/visa/apply', 
+        fetch('https://visa-navigator-server-phi.vercel.app/visa/apply', 
             {
                 method: 'POST',
                 headers: {
@@ -31,8 +32,8 @@ const VisaDetails = () => {
               .then(res => res.json()) 
               .then(data => {
                 //   console.log(data.result); 
-                  if(data.result) alert("Visa applied successfully.")
-                    else alert("You have already applied for this country")
+                  if(data.result) toast.success("Visa applied successfully.")
+                    else toast.error("You have already applied for this country")
               })
                 .catch(err => {
                     console.log(err);

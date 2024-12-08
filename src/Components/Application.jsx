@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
+import { toast } from "react-toastify";
 
 
 const Application = () => {
@@ -13,7 +14,7 @@ const Application = () => {
         visaDetails.uploadTime = new Date().toISOString();
         visaDetails.addedBy = user.uid;
         console.log(visaDetails)
-        fetch('http://localhost:5000/visa', {
+        fetch('https://visa-navigator-server-phi.vercel.app/visa', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -26,7 +27,7 @@ const Application = () => {
             })
         console.log(visaDetails);
 
-        alert("Visa Added Successfully");
+        toast("Visa Added Successfully");
 
         e.target.reset();
 

@@ -13,7 +13,7 @@ const Login = () => {
           const user = result.user;
           setUser(user);
           console.log(user);
-          fetch('http://localhost:5000/users',{
+          fetch('https://visa-navigator-server-phi.vercel.app/users',{
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -57,7 +57,7 @@ const Login = () => {
 
     }
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50 gap-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 gap-6">
       <div className="w-full max-w-sm px-6 py-8 bg-white shadow-lg rounded-lg">
         <h2 className="text-2xl font-semibold text-center text-gray-800 mb-6">Sign In</h2>
         <form className="space-y-4" onSubmit={handleLogin}>
@@ -97,8 +97,8 @@ const Login = () => {
         </div>
       </div>
       <div>
-        <div className="flex items-center gap-9">
-          <p className="text-2xl">OR</p>
+        <div className="lg:flex-row sm:flex-col justify-center  items-center gap-9">
+          <p className="text-2xl text-center">OR</p>
           <div>
             <button className="mt-6 w-full flex items-center justify-center py-2 px-4 text-gray-700 border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 focus:ring-2 focus:ring-offset-2 focus:ring-gray-300" onClick={handleSignInGoogle}
           >

@@ -2,6 +2,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Navigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 
@@ -11,7 +12,7 @@ const PrivateRoute = ({children}) => {
     if(user && user?.email){
         return (children);
     }
-    alert("You need to log in to access this page.");
+    toast("You need to log in to access this page.");
     return (
         <div>
             <Navigate to={"/auth"}></Navigate>

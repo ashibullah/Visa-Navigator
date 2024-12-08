@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FcGoogle } from "react-icons/fc"; 
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -46,7 +47,7 @@ const SignUp = () => {
                     //    console.log(user); 
 
                     navigate("/"); 
-                    fetch('http://localhost:5000/users',{
+                    fetch('https://visa-navigator-server-phi.vercel.app/users',{
                       method: 'POST',
                       headers: {
                           'content-type': 'application/json',
@@ -62,7 +63,7 @@ const SignUp = () => {
                       
                     })
                     .catch((err) => {
-                        alert("Error updating profile:", err);
+                        toast("Error updating profile:", err);
                     });
 
 
