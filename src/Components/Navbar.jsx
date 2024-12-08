@@ -1,10 +1,16 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
 
   const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout =()=>{
+    navigate("/");
+    logout();
+  }
   return (
     <nav className="sticky top-0 z-10  bg-blur backdrop-blur-lg">
       <div className="navbar bg-black text-white  opacity-80 flex justify-around mx-auto ">
@@ -18,8 +24,8 @@ const Navbar = () => {
             user && (
               <>
               <NavLink to={"/visas/add"} className=" text-sm">Add Visa</NavLink>
-               <NavLink to={`/visa/myVisa/${user.email}`} className=" text-sm">My Added Visa</NavLink>
-               <NavLink to={"/visas/application"} className=" text-sm">My Visa Application</NavLink>
+               <NavLink to={`/visa/myVisa/${user.email}`} className=" text-sm">My Visa Application</NavLink>
+               <NavLink to={`/visa/addedBy/${user.uid}`} className=" text-sm">My Added Visa</NavLink>
               </>
             )
           }
@@ -47,7 +53,7 @@ const Navbar = () => {
                     Profile
                   </a>
                 </li>
-                <li><button onClick={logout}>Logout</button></li>
+                <li><button onClick={handleLogout}>Logout</button></li>
               </ul>
             </div>
           ) : (<div className="space-x-4">

@@ -12,8 +12,8 @@ const SignUp = () => {
           const user = result.user;
           setUser(user);
           console.log(user);
-          // IdP data available using getAdditionalUserInfo(result)
-          // ...
+          
+         
       }).catch((error) => {
           // Handle Errors here.
           const errorCode = error.code;
@@ -21,6 +21,7 @@ const SignUp = () => {
           // The email of the user's account used.
           const email = error.customData.email;
           // The AuthCredential type that was used.
+          // eslint-disable-next-line no-undef
           const credential = GoogleAuthProvider.credentialFromError(error);
           // ...
           console.log(error,errorCode,errorMessage,email,credential)
@@ -45,6 +46,20 @@ const SignUp = () => {
                     //    console.log(user); 
 
                     navigate("/"); 
+                    fetch('http://localhost:5000/users',{
+                      method: 'POST',
+                      headers: {
+                          'content-type': 'application/json',
+                      },
+                      body: JSON.stringify(user),
+          
+                    })
+                      .then(res => res.json())
+                      .catch(err => {
+                          console.log(err);
+                      })
+
+                      
                     })
                     .catch((err) => {
                         alert("Error updating profile:", err);

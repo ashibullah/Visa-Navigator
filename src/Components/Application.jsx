@@ -1,6 +1,9 @@
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 
 const Application = () => {
+    const {user} = useContext(AuthContext);
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -8,6 +11,8 @@ const Application = () => {
         const visaDetails = Object.fromEntries(formData.entries());
         visaDetails.requiredDocuments = formData.getAll("requiredDocuments");
         visaDetails.uploadTime = new Date().toISOString();
+        visaDetails.addedBy = user.uid;
+        console.log(visaDetails)
         fetch('http://localhost:5000/visa', {
             method: 'POST',
             headers: {

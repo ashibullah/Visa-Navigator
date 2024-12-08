@@ -7,13 +7,18 @@ import { Link, useLoaderData } from "react-router-dom";
 const Myvisa = () => {
     const { user } = useContext(AuthContext);
     const myVisaInfo = useLoaderData();
+    // console.log(myVisaInfo)
 
     // console.log(myVisaInfo);
     // console.log(user.email)
     return (<>
     <Navbar/>
     <div className="overflow-x-auto lg:max-w-7xl mt-10 mx-auto">
-            <table className="table">
+        {/* <h1 className="text-lg font-bold text-center">List of visa added by {user.displayName}</h1> */}
+        {
+            (myVisaInfo.length)? <div> 
+                <h1 className="text-lg font-bold text-center mb-5">List of visa Applied by {user.displayName}</h1>
+                <table className="table">
                 {/* Table head */}
                 <thead>
                     <tr>
@@ -53,6 +58,11 @@ const Myvisa = () => {
                 </tbody>
                 
             </table>
+            </div>: <div>
+            <h1 className="text-lg font-bold text-center">There is no visa applied by {user.displayName}</h1>
+            </div>
+        }
+           
         </div>
     </>
         

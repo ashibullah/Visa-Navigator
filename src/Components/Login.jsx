@@ -50,7 +50,7 @@ const Login = () => {
     emailLogin(email,password)
     .then(result =>{
       console.log(result);
-      navigate("/")
+      navigate("/");   
     }).catch(err =>{
       alert(err);
     })
